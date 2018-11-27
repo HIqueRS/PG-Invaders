@@ -22,7 +22,34 @@ GLFWwindow *g_window = NULL;
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 float posplusx = 0.f, posplusy = 0.f, posplusz = 0.f;
 
+
 Nave nave;
+
+//// Movimentação inimigo ////
+bool enemy_dir = true; // if true == dir false == esq
+float enemyX= -1.f, enemyY =1.f;
+void enemy_move(float &enemyX, float &enemyY) {
+	if (enemy_dir){
+		if (enemyX < 2.9) {
+			enemyX += 0.0015f;
+		}
+		else{
+			enemyY -= 0.1f;
+			enemy_dir = false;
+		}
+	}
+	else{
+		if (enemyX > -1){
+			enemyX -= 0.0015f;
+		}
+		else {
+			enemyY -= 0.1f;
+			enemy_dir = true;
+		}
+	}
+}
+//// movimentação inimigo ////
+
 int main() {
 	restart_gl_log();
 	// all the GLFW and GLEW start-up code is moved to here in gl_utils.cpp
@@ -76,9 +103,9 @@ int main() {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	GLfloat inimigos[]{
-		0.0f,  -0.1f, 0.0f, 1.0f, 0.0f, 0.0f, // 0
-		0.05f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, // 1
-		-0.05f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, // 2
+		-0.95f,  0.9f, 0.0f, 1.0f, 0.0f, 0.0f, // 0 ponta
+		-0.90f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, // 1 dir
+		-1.00f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, // 2 esq
 	};
 	unsigned int indices_inimigos[] = { 0,2,1 };
 
@@ -256,6 +283,10 @@ int main() {
 		glUseProgram(enemy_shader_programme);
 		glBindVertexArray(vao_enemy);
 		// draw points 0-3 from the currently bound VAO with current in-use shader
+		posuniform = glGetUniformLocation(shader_programme, "posplus");
+		enemy_move(enemyX, enemyY);
+		glUniform4f(posuniform, enemyX, enemyY, 0.0f, 1.0f);
+
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 

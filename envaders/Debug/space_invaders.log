@@ -1,1 +1,4 @@
-﻿  space_invaders.vcxproj -> C:\Users\rique\OneDrive\Documents\GitHub\PG-Invaders\Debug\space_invaders.exe
+﻿  main.cpp
+c:\users\rique\onedrive\documents\github\pg-invaders\envaders\main.cpp(160): warning C4474: 'fprintf' : too many arguments passed for format string
+  c:\users\rique\onedrive\documents\github\pg-invaders\envaders\main.cpp(160): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+  space_invaders.vcxproj -> C:\Users\rique\OneDrive\Documents\GitHub\PG-Invaders\Debug\space_invaders.exe

@@ -1,3 +1,1 @@
-﻿  main.cpp
-c:\users\rique\onedrive\documents\github\pg-invaders\envaders\main.cpp(170): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-  space_invaders.vcxproj -> C:\Users\rique\OneDrive\Documents\GitHub\PG-Invaders\Debug\space_invaders.exe
+﻿  space_invaders.vcxproj -> C:\Users\rique\OneDrive\Documents\GitHub\PG-Invaders\Debug\space_invaders.exe

@@ -31,6 +31,7 @@
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="enemy_vs.glsl" />
     <None Include="test_fs.glsl" />
     <None Include="test_vs.glsl" />
   </ItemGroup>

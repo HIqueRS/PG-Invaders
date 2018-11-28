@@ -23,12 +23,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="maths_funcs.cpp" />
     <ClCompile Include="Nave.cpp" />
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gl_utils.h" />
     <ClInclude Include="maths_funcs.h" />
     <ClInclude Include="Nave.h" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="enemy_vs.glsl" />

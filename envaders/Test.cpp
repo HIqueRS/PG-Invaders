@@ -13,6 +13,18 @@ Test::~Test()
 {
 }
 
+Test::Test(int i)
+{
+	enemyX = -1.f;
+	enemyY = 1.f;
+	pos = 0.11f;
+
+	for (int it = 0; it < 18; it++)
+	{
+		inimigos[it] += pos * i;
+	}
+}
+
 void Test::movimentacao(float & enemyX, float & enemyY)
 {
 	if (enemy_dir) {

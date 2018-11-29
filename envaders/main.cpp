@@ -15,6 +15,7 @@
 #include "stb_image.h"
 #include "Nave.h"
 #include "Test.h"
+#include "Bullet.h"
 
 int g_gl_width = 640;
 int g_gl_height = 480;
@@ -22,13 +23,18 @@ GLFWwindow *g_window = NULL;
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 float posplusx = 0.f, posplusy = 0.f, posplusz = 0.f;
-
+bool atirou = false;
 
 Nave nave;
+//bala
+Bullet bala;
+
+//bala
+
 
 //// Movimentação inimigo ////
 
-Test test, test2;
+Test test(1), test2(2);
 
 //bool enemy_dir = true; // if true == dir false == esq
 //float enemyX= -1.f, enemyY =1.f;
@@ -107,7 +113,11 @@ int main() {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	test.inicializar();
-	//test2.inicializar();
+	test2.inicializar();
+
+	//bala//
+	bala.inicializar();
+	//bala//
 
 	//GLfloat inimigos[]{
 	//	-0.95f,  0.9f, 0.0f, 1.0f, 0.0f, 0.0f, // 0 ponta
@@ -271,6 +281,8 @@ int main() {
 		// bind Texture
 		glBindTexture(GL_TEXTURE_2D, texture);
 
+
+		
 		//
 		// Note: this call is not necessary, but I like to do it anyway before any
 		// time that I call glDrawArrays() so I never use the wrong shader programme
@@ -282,7 +294,7 @@ int main() {
 		// Note: this call is not necessary, but I like to do it anyway before any
 		// time that I call glDrawArrays() so I never use the wrong vertex data
 		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////INIMIGO/////////////////////////////////////////////////////////
@@ -298,6 +310,11 @@ int main() {
 		//glBindVertexArray(0);
 
 		test.atualizar();
+		test2.atualizar();
+
+		//bala
+		bala.atualizar(posplusx, posplusy, atirou);
+		//bala
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////INIMIGO/////////////////////////////////////////////////////////
@@ -363,7 +380,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 	if (key == GLFW_KEY_X && action == GLFW_PRESS)
 	{
-		std::cout <<"x ="<< posplusx <<"\n y =" <<posplusy<<	 "X de X-homens\n";
+		atirou = true;
+		//std::cout <<"x ="<< posplusx <<"\n y =" <<posplusy<<	 "X de X-homens\n";
 	}
 }
 

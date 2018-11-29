@@ -20,6 +20,7 @@ class Test
 public:
 	Test();
 	~Test();
+	Test(int i);
 	void movimentacao(float &enemyX, float &enemyY);
 	void inicializar();
 	void atualizar();
@@ -27,7 +28,7 @@ public:
 protected:
 
 	
-	float enemyX, enemyY;
+	float enemyX, enemyY,pos;
 	bool enemy_dir = true; // if true == dir false == esq
 
 	GLfloat inimigos[18] {
@@ -47,7 +48,7 @@ protected:
 
 	GLuint EBO_enemy;
 
-	GLuint enemy_shader_programme ;
+	GLuint enemy_shader_programme;
 
 };
 
